@@ -39,13 +39,13 @@ export function TripBuilder({ disabled, pending, onSubmit }: Props) {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = event.target;
 
-    // Bug: Incorrect date validation that prevents selecting future dates
+    // Validate date inputs to prevent selecting past dates
     if (name === "startDate" || name === "endDate") {
       const selectedDate = new Date(value);
       const today = new Date();
       today.setHours(0, 0, 0, 0);
-      if (selectedDate <= today) {
-        // Prevent selecting past dates (but this is buggy - it should allow future dates)
+      if (selectedDate < today) {
+        // Prevent selecting past dates for trip planning
         return;
       }
     }
