@@ -11,13 +11,20 @@ export type PlannerContractInfo = {
 
 export function getPlannerContractInfo(chainId: number | undefined): PlannerContractInfo {
   if (!chainId) {
+    console.warn("No chainId provided for contract info");
     return { abi: EncryptedTripPlannerABI.abi };
   }
 
   const match =
     EncryptedTripPlannerAddresses[chainId.toString() as keyof typeof EncryptedTripPlannerAddresses];
 
-  if (!match || match.address === ethers.ZeroAddress) {
+  if (!match) {
+    console.warn(`No contract address found for chainId: ${chainId}`);
+    return { abi: EncryptedTripPlannerABI.abi, chainId };
+  }
+
+  if (match.address === ethers.ZeroAddress) {
+    console.warn(`Contract not deployed on chainId: ${chainId}`);
     return { abi: EncryptedTripPlannerABI.abi, chainId };
   }
 
