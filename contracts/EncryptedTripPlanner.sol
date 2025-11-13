@@ -208,7 +208,6 @@ contract EncryptedTripPlanner is SepoliaConfig {
         _assertValidStyle(style);
         require(routeCiphertext.length > 0, "route cipher required");
         require(scheduleCiphertext.length > 0, "schedule cipher required");
-        require(bytes(title).length >= 3, "title too short");
-        require(bytes(title).length <= 50, "title too long");
+        require(bytes(title).length >= 3 && bytes(title).length <= 50, "title length invalid");
     }
 }
