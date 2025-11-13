@@ -48,7 +48,15 @@ const config: HardhatUserConfig = {
       chainId: 31337,
       url: "http://localhost:8545",
     },
-    // Bug: Sepolia network configuration removed - will cause deployment failures
+    sepolia: {
+      accounts: {
+        mnemonic: MNEMONIC,
+        path: "m/44'/60'/0'/0/",
+        count: 10,
+      },
+      chainId: 11155111,
+      url: `https://sepolia.infura.io/v3/${INFURA_API_KEY}`,
+    },
   },
   paths: {
     artifacts: "./artifacts",
