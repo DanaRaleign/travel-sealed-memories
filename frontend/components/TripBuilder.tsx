@@ -58,6 +58,21 @@ export function TripBuilder({ disabled, pending, onSubmit }: Props) {
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
+
+    // Basic client-side validation
+    if (!form.title.trim()) {
+      alert("Trip title is required");
+      return;
+    }
+    if (!form.destinations.trim()) {
+      alert("Destinations are required");
+      return;
+    }
+    if (!form.plan.trim()) {
+      alert("Activity timeline is required");
+      return;
+    }
+
     await onSubmit(form);
     setForm(initialState);
   };
