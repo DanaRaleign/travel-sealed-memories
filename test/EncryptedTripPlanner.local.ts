@@ -145,4 +145,43 @@ describe("EncryptedTripPlanner (local mock)", function () {
     expect(trips).to.eq(1);
     expect(nights).to.eq(4);
   });
+
+  it("rejects trips with invalid title lengths", async function () {
+    const duration = 3;
+    const encryptedDuration = await encryptUint32(plannerAddress, signers.alice, duration);
+    const encryptedUnit = await encryptUint32(plannerAddress, signers.alice, 1);
+
+    // Test title too short
+    await expect(
+      planner
+        .connect(signers.alice)
+        .storeTrip(
+          ethers.toUtf8Bytes("route"),
+          ethers.toUtf8Bytes("schedule"),
+          "AB", // Too short
+          0,
+          encryptedDuration.handles[0],
+          encryptedDuration.inputProof,
+          encryptedUnit.handles[0],
+          encryptedUnit.inputProof,
+        ),
+    ).to.be.revertedWith("title too short");
+
+    // Test title too long
+    const longTitle = "A".repeat(51); // 51 characters, exceeds limit
+    await expect(
+      planner
+        .connect(signers.alice)
+        .storeTrip(
+          ethers.toUtf8Bytes("route"),
+          ethers.toUtf8Bytes("schedule"),
+          longTitle,
+          0,
+          encryptedDuration.handles[0],
+          encryptedDuration.inputProof,
+          encryptedUnit.handles[0],
+          encryptedUnit.inputProof,
+        ),
+    ).to.be.revertedWith("title length invalid");
+  });
 });
