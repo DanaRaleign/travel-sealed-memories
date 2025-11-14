@@ -4,9 +4,11 @@ import { Providers } from "@/app/providers";
 import { SiteNav } from "@/components/SiteNav";
 
 export const metadata: Metadata = {
-  title: "Encrypted Trip Planner",
+  title: "TripLock - Encrypted Trip Planner",
   description:
-    "Plan and analyse private itineraries with local AES encryption and FHE-powered smart contracts.",
+    "Plan and analyse private itineraries with local AES encryption and FHE-powered smart contracts. Fully homomorphic encryption ensures your travel plans remain private.",
+  keywords: ["travel", "privacy", "encryption", "FHE", "blockchain", "trip planning"],
+  authors: [{ name: "TripLock Team" }],
   other: {
     "Content-Language": "en",
   },
