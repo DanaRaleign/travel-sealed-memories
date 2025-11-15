@@ -23,10 +23,15 @@ async function getCryptoKey() {
     throw new Error("Client-side encryption is not available during SSR.");
   }
 
-  const cached = window.localStorage.getItem(STORAGE_KEY);
-  if (cached) {
-    const keyBuffer = base64ToBuffer(cached);
-    return window.crypto.subtle.importKey("raw", keyBuffer, "AES-GCM", true, ["encrypt", "decrypt"]);
+  try {
+    const cached = window.localStorage.getItem(STORAGE_KEY);
+    if (cached) {
+      const keyBuffer = base64ToBuffer(cached);
+      return window.crypto.subtle.importKey("raw", keyBuffer, "AES-GCM", true, ["encrypt", "decrypt"]);
+    }
+  } catch (error) {
+    console.warn("Failed to load cached encryption key:", error);
+    // Fall through to generate new key
   }
 
   const key = await window.crypto.subtle.generateKey({ name: "AES-GCM", length: 256 }, true, [
