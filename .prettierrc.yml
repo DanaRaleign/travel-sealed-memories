@@ -2,6 +2,10 @@ plugins:
   - "prettier-plugin-solidity"
 printWidth: 120
 trailingComma: "all"
+semi: true
+singleQuote: false
+tabWidth: 2
+useTabs: false
 
 overrides:
   - files: "*.md"
@@ -16,6 +20,13 @@ overrides:
     options:
       importOrder: ["<THIRD_PARTY_MODULES>", "^[./]"]
       importOrderParserPlugins: ["typescript"]
+      importOrderSeparation: true
+      importOrderSortSpecifiers: true
+      parser: "typescript"
+  - files: "*.tsx"
+    options:
+      importOrder: ["<THIRD_PARTY_MODULES>", "^[./]"]
+      importOrderParserPlugins: ["typescript", "jsx"]
       importOrderSeparation: true
       importOrderSortSpecifiers: true
       parser: "typescript"
