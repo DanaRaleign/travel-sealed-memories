@@ -13,9 +13,11 @@ contract FHECounter is SepoliaConfig {
         return _count;
     }
 
-    /// @notice Increments the counter by a specified encrypted value.
-    /// @dev This example omits overflow/underflow checks for simplicity and readability.
-    /// In a production contract, proper range checks should be implemented.
+/// @notice Increments the counter by a specified encrypted value.
+/// @dev This example omits overflow/underflow checks for simplicity and readability.
+/// In a production contract, proper range checks should be implemented.
+/// @param inputEuint32 The encrypted value to add to the counter
+/// @param inputProof Zero-knowledge proof for the encrypted input
     function increment(externalEuint32 inputEuint32, bytes calldata inputProof) external {
         euint32 encryptedEuint32 = FHE.fromExternal(inputEuint32, inputProof);
 
