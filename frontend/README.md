@@ -1,20 +1,28 @@
-# FHEVM React Template
+# TripLock Frontend
 
-The FHEVM React Template is an ultra-minimal React project for building and running an FHEVM-enabled dApp.
-It works alongside the [fhevm-hardhat-template](https://github.com/zama-ai/fhevm-hardhat-template)
-and provides a simple development frontend for interacting with the `FHECounter.sol` contract.
+The TripLock frontend is a modern Next.js application that provides an encrypted trip planning interface. Users can create, manage, and analyze travel itineraries with complete privacy using Fully Homomorphic Encryption (FHE).
 
-This template also illustrates how to run your FHEVM-dApp on both Sepolia as well as a local Hardhat Node (much faster).
+This frontend works alongside the TripLock smart contracts and provides a beautiful, responsive interface for interacting with encrypted trip data on-chain.
+
+## 🚀 Features
+
+- **Encrypted Trip Planning**: Create trips with local AES-GCM encryption
+- **Homomorphic Analytics**: View travel style insights computed with FHE
+- **Wallet Integration**: Connect MetaMask and other Web3 wallets
+- **Responsive Design**: Beautiful UI built with Tailwind CSS
+- **Real-time Updates**: Live connection to blockchain state
 
 > [!IMPORTANT]
-> Please follow the detailed installation instructions [below](#install).
+> This frontend requires the TripLock smart contracts to be deployed. Please follow the installation instructions below.
 
 ## Features
 
-- **@zama-fhe/relayer-sdk**: Fully Homomorphic Encryption for Ethereum Virtual Machine
-- **React**: Modern UI framework for building interactive interfaces
-- **Next.js**: Next-generation frontend build tool
-- **Tailwind**: Utility-first CSS framework for rapid UI development
+- **Fully Homomorphic Encryption**: Privacy-preserving analytics on encrypted data
+- **Next.js 14**: Modern React framework with App Router
+- **TypeScript**: Type-safe development experience
+- **Tailwind CSS**: Utility-first styling for rapid UI development
+- **ethers.js**: Ethereum blockchain interaction
+- **Web3Modal**: Multi-wallet connection support
 
 ## Requirements
 
@@ -31,82 +39,53 @@ Follow the step-by-step guide in the [Hardhat + MetaMask](https://docs.metamask.
 
 ## Install
 
-### Automatic install
+### Installation
 
-1. Clone this repository.
-2. From the repo root, run:
+1. Navigate to the frontend directory:
 
 ```sh
-# - git clone "https://github.com/zama-ai/fhevm-hardhat-template.git" into <root>/packages
-# - npm install
-# - auto-depoy on hardhat node
-node ./scripts/install.mjs
+cd frontend
 ```
 
-### Manual install
-
-1. Clone this repository.
-2. From the repo root, execute the following:
+2. Install dependencies:
 
 ```sh
-cd ./packages
-git clone "https://github.com/zama-ai/fhevm-hardhat-template.git"
-cd ..
 npm install
 ```
 
-## Setup
+3. Ensure the smart contracts are deployed (see root README for deployment instructions).
 
-1. Setup your hardhat environment variables:
-
-Follow the detailed instructions in the [FHEVM documentation](https://docs.zama.ai/protocol/solidity-guides/getting-started/setup#set-up-the-hardhat-configuration-variables-optional) to setup `MNEMONIC` + `INFURA_API_KEY` Hardhat environment variables
-
-2. Start a local Hardhat node (new terminal):
+4. Start the development server:
 
 ```sh
-cd packages/fhevm-hardhat-template
-npx hardhat node --verbose
-# Default RPC: http://127.0.0.1:8545  | chainId: 31337
+npm run dev
 ```
 
-3. Deploy `FHECounter` to the local node:
+5. Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+## Development
+
+### Prerequisites
+
+- MetaMask or compatible Web3 wallet
+- Local Hardhat node running (from project root)
+- Smart contracts deployed to local network
+
+### Running the Application
+
+1. Connect MetaMask to local Hardhat network:
+   - Network Name: Hardhat
+   - RPC URL: http://127.0.0.1:8545
+   - Chain ID: 31337
+   - Currency Symbol: ETH
+
+2. Start the frontend:
 
 ```sh
-# still in packages/fhevm-hardhat-template
-npx hardhat deploy --network localhost
+npm run dev
 ```
 
-4. Deploy to Sepolia:
-
-Follows instructions in the [FHEVM documentation to setup your Hardhat project for Sepolia](https://docs.zama.ai/protocol/solidity-guides/getting-started/setup#set-up-the-hardhat-configuration-variables-optional)
-
-```sh
-# still in packages/fhevm-hardhat-template
-npx hardhat deploy --network sepolia
-```
-
-## Run frontend in mock mode
-
-1. Start a local Hardhat node (new terminal):
-
-```sh
-cd packages/fhevm-hardhat-template
-npx hardhat node --verbose
-```
-
-2. From the `<root>/packages/site` run
-
-```sh
-npm run dev:mock
-```
-
-3. In your browser open `http://localhost:3000`
-
-4. Open Metamask connect to local Hardhat node
-   i. Select Add network.
-   ii. Select Add a network manually.
-   iii. Enter your Hardhat Network RPC URL, http://127.0.0.1:8545/ (or http://localhost:8545).
-   iv. Enter your Hardhat Network chain ID, 31337 (or 0x539 in hexadecimal format).
+3. Open [http://localhost:3000](http://localhost:3000) and connect your wallet.
 
 ## How to fix Hardhat Node + Metamask Errors ?
 
@@ -139,18 +118,25 @@ To fix the view function result mismatch:
 
 By following these steps, you can ensure that MetaMask syncs correctly with your Hardhat node and avoid potential issues related to nonces and cached view function results.
 
-## Project Structure Overview
+## Project Structure
 
-### Key Files/Folders
+```
+frontend/
+├── app/                 # Next.js app router pages
+├── components/          # React components
+├── fhevm/              # FHEVM integration utilities
+├── hooks/              # Custom React hooks
+├── lib/                # Utility functions and encryption
+├── abi/                # Contract ABIs and addresses
+└── public/             # Static assets
+```
 
-- **`<root>/packages/site/fhevm`**: This folder contains the essential hooks needed to interact with FHEVM-enabled smart contracts. It is meant to be easily copied and integrated into any FHEVM + React project.
+### Key Components
 
-- **`<root>/packages/site/hooks/useFHECounter.tsx`**: A simple React custom hook that demonstrates how to use the `useFhevm` hook in a basic use case, serving as an example of integration.
-
-### Secondary Files/Folders
-
-- **`<root>/packages/site/hooks/metamask`**: This folder includes hooks designed to manage the MetaMask Wallet provider. These hooks can be easily adapted or replaced to support other wallet providers, following the EIP-6963 standard,
-- Additionally, the project is designed to be flexible, allowing developers to easily replace `ethers.js` with a more React-friendly library of their choice, such as `Wagmi`.
+- **TripBuilder**: Form for creating encrypted trip itineraries
+- **TripVault**: Display and manage stored encrypted trips
+- **InsightBoard**: View homomorphic analytics on travel styles
+- **FHEVM Hooks**: Utilities for encrypted contract interactions
 
 ## Documentation
 
