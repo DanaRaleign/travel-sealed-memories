@@ -2,12 +2,20 @@
 
 A fully encrypted trip planning application built with FHEVM (Fully Homomorphic Encryption Virtual Machine) and Next.js. Plan and analyze private travel itineraries without exposing your data.
 
+## 🌐 Live Demo
+
+- **Web Application**: [https://trip-eta-one.vercel.app/](https://trip-eta-one.vercel.app/)
+- **Demo Video**: [TripLock Demo Video](https://www.youtube.com/watch?v=demo-link) *(Coming Soon)*
+
 ## 🚀 Features
 
 - **Privacy-First**: All trip data is encrypted locally using AES-GCM before being stored on-chain
 - **Homomorphic Analytics**: Travel style insights are computed using fully homomorphic encryption
 - **Decentralized Storage**: Encrypted trip data is stored permanently on the blockchain
 - **Multi-Network Support**: Deployable to Ethereum mainnet, testnets, and local development networks
+- **Trip Builder**: Create detailed itineraries with destinations, activities, and schedules
+- **Trip Vault**: Manage and view all your encrypted trips
+- **Style Insights**: Analyze travel patterns across different categories (Adventure, Culture, Wellness, Family)
 
 ## 📦 Tech Stack
 
@@ -28,6 +36,18 @@ A fully encrypted trip planning application built with FHEVM (Fully Homomorphic 
 └─────────────────┘    └─────────────────┘    └─────────────────┘
 ```
 
+## 📋 Contract Addresses
+
+### Testnet Deployment (Sepolia)
+- **EncryptedTripPlanner**: `0x271cf992495f9d14e1C0B1aB6dCC8D801bb72C42`
+- **Network**: Ethereum Sepolia Testnet
+- **Chain ID**: 11155111
+
+### Local Development
+- **EncryptedTripPlanner**: `0x5FbDB2315678afecb367f032d93F642f64180aa3`
+- **Network**: Hardhat Local Node
+- **Chain ID**: 31337
+
 ## 🚀 Quick Start
 
 ### Prerequisites
@@ -40,7 +60,7 @@ A fully encrypted trip planning application built with FHEVM (Fully Homomorphic 
 
 ```bash
 # Clone the repository
-git clone <repository-url>
+git clone https://github.com/DanaRaleign/travel-sealed-memories.git
 cd travel-sealed-memories
 
 # Install dependencies
@@ -50,7 +70,19 @@ npm install
 cd frontend && npm install && cd ..
 ```
 
-### Development
+### Using Deployed Contracts
+
+The application is already deployed and ready to use:
+
+1. **Connect Wallet**: Use MetaMask to connect to Ethereum Sepolia testnet
+2. **Add Sepolia Network** to MetaMask (if not already added):
+   - Network Name: Sepolia
+   - RPC URL: https://sepolia.infura.io/v3/YOUR_INFURA_KEY
+   - Chain ID: 11155111
+   - Currency Symbol: SepoliaETH
+3. **Visit**: [https://trip-eta-one.vercel.app/](https://trip-eta-one.vercel.app/)
+
+### Local Development
 
 ```bash
 # Start local Hardhat node with FHEVM
@@ -67,18 +99,34 @@ cd frontend && npm run dev
 
 ```bash
 # Run contract tests
-npm test
+npm run test
 
 # Run frontend tests
-cd frontend && npm test
+cd frontend && npm run test
 ```
 
 ## 📚 Documentation
 
-For detailed documentation, please refer to:
+### Project Documentation
+- **TripLock Live Demo**: [https://trip-eta-one.vercel.app/](https://trip-eta-one.vercel.app/)
+- **GitHub Repository**: [https://github.com/DanaRaleign/travel-sealed-memories](https://github.com/DanaRaleign/travel-sealed-memories)
+
+### Technical Documentation
 - [FHEVM Documentation](https://docs.zama.ai/fhevm)
 - [Hardhat Documentation](https://hardhat.org/docs)
 - [Next.js Documentation](https://nextjs.org/docs)
+- [Zama FHEVM GitHub](https://github.com/zama-ai/fhevm)
+
+### How to Use TripLock
+
+1. **Connect Wallet**: Connect your MetaMask wallet to Sepolia testnet
+2. **Create Trip**: Use the Trip Builder to plan your itinerary
+   - Enter trip title, select travel style
+   - Set start and end dates
+   - Add destinations and activities
+3. **Encrypt & Store**: Your trip data is encrypted locally and stored on-chain
+4. **View Trips**: Access your encrypted trips in the Trip Vault
+5. **Analyze Insights**: View homomorphic analytics of travel patterns
 
 ## 🤝 Contributing
 
