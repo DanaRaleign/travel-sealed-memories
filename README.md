@@ -5,7 +5,7 @@ A fully encrypted trip planning application built with FHEVM (Fully Homomorphic 
 ## 🌐 Live Demo
 
 - **Web Application**: [https://trip-eta-one.vercel.app/](https://trip-eta-one.vercel.app/)
-- **Demo Video**: [TripLock Demo Video](https://www.youtube.com/watch?v=demo-link) *(Coming Soon)*
+- **Demo Video**: [TripLock Demo Video](https://trip-eta-one.vercel.app/triplock-demo.mp4)
 
 ## 🚀 Features
 
