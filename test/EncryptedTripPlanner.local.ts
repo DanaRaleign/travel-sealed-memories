@@ -165,7 +165,7 @@ describe("EncryptedTripPlanner (local mock)", function () {
           encryptedUnit.handles[0],
           encryptedUnit.inputProof,
         ),
-    ).to.be.revertedWith("title too short");
+    ).to.be.revertedWith("title length invalid");
 
     // Test title too long
     const longTitle = "A".repeat(51); // 51 characters, exceeds limit

@@ -4,7 +4,7 @@ A fully encrypted trip planning application built with FHEVM (Fully Homomorphic 
 
 ## 🌐 Live Demo
 
-- **Web Application**: [https://trip-eta-one.vercel.app/](https://trip-eta-one.vercel.app/)
+- **Web Application**: [https://travel-sealed.vercel.app/](https://travel-sealed.vercel.app/)
 - **Demo Video**: [TripLock Demo Video](https://github.com/DanaRaleign/travel-sealed-memories/blob/main/travel.mp4)
 
 ## 🚀 Features
@@ -80,7 +80,7 @@ The application is already deployed and ready to use:
    - RPC URL: https://sepolia.infura.io/v3/YOUR_INFURA_KEY
    - Chain ID: 11155111
    - Currency Symbol: SepoliaETH
-3. **Visit**: [https://trip-eta-one.vercel.app/](https://trip-eta-one.vercel.app/)
+3. **Visit**: [https://travel-sealed.vercel.app/](https://travel-sealed.vercel.app/)
 
 ### Local Development
 
@@ -108,7 +108,7 @@ cd frontend && npm run test
 ## 📚 Documentation
 
 ### Project Documentation
-- **TripLock Live Demo**: [https://trip-eta-one.vercel.app/](https://trip-eta-one.vercel.app/)
+- **TripLock Live Demo**: [https://travel-sealed.vercel.app/](https://travel-sealed.vercel.app/)
 - **GitHub Repository**: [https://github.com/DanaRaleign/travel-sealed-memories](https://github.com/DanaRaleign/travel-sealed-memories)
 
 ### Technical Documentation
